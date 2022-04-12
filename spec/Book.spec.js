@@ -1,15 +1,23 @@
-const Book = require('../src/Book.js')
+const { Book } = require('../src/Readables.js')
+const Author = require("../src/Author")
 
 describe("Book", () => {
   let book
   beforeEach(() => {
-    book = new Book('My Lovely Book')
+    author = new Author("Carl" , 456)
+    book = new Book('My Lovely Book', author)
   })
 
   describe('#constructor', () => {
     it('has a title', () => {
       expect(book.title).toEqual('My Lovely Book')
     })
+
+    it('Author of the book and Phone Number', () => {
+      expect(book.author.name).toEqual("Carl")
+      expect(book.author.telNum).toEqual(456) 
+    })
+
 
     it('is not on loan', () => {
       expect(book.isOnLoan()).toEqual(false)
